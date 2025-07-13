@@ -1,0 +1,34 @@
+Given a class and its component
+void OrderedList<T>::deleteNode(const T &item) {
+    node<T> *current, *trail;
+    bool valid = false;
+    current = head;
+    trail = NULL;
+    if (isEmpty()) 
+        cout << "Empty list";
+    else {
+        if (head->info == item) {
+            head = current->link;
+            delete current;
+            if (current == NULL) 
+                tail = NULL;
+            count--;
+        }
+        else {
+            //Search for the element now
+            while (current != NULL && !valid) {
+                if (current->info != item) {
+                    trail = current;
+                    current = current->link;
+                }
+                else {
+                    trail->link = current->link;
+                    delete current;
+                    found = true;
+                }
+            }
+            if (!valid) 
+                cout << "Couldn't find it"
+        }
+    }
+}

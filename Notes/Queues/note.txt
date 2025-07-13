@@ -1,0 +1,41 @@
+Stacks have only a single end
+But queues have two ends
+It is a first-in first-out data structure, and similarly, last-in last-out data structure
+Just like stacks, we do not have access to the middle elements
+Operations such as enqueue and dequeue, isEmptyQueue, isFullQueue (only applicable for array-based queues), front, back, initializeQueue
+
+Since we have two sides to the queue, we have to mark them as queueFront and queueRear
+The other explanations are added in the PPT
+
+Items added from one end and deleted from the other
+
+
+Suppose a queue:
+addQueue(A);
+addQueue(B);
+addQueue(C);
+It is now ABC 
+deleteQueue();
+Now BC with the deletion
+
+Dequeuing is slightly different than how we would previously do it. 
+IRL, when we dequeue, we move all the queuers forward, but in CS, we make the cashier forward towards the queues.
+
+I mentioned one point about how it may not be efficient to keep moving the front queue, that eventually, it will just reach the back of the queue
+To avert this, we either make the queue circular or move all the elements when this scenario happens.
+
+For the circular queue, we can say queueRear = (queueRear + 1) % maxQueueSize;
+We use count to avoid the entire confusion raised from the circular queue
+
+
+QueueRear gets initialized with maxQueueSize - 1
+For instance, maxSize is 100, then rear would be 99. And hence, the insertion would be at 0
+
+Sometimes, we can continue in the cases of minor errors using an if-else statement, but something too grave requires us to use assert that terminates the program
+
+Enqueue method:
+All entrances are through the rear of the queue. 
+
+
+Delete method:
+We don't really delete, but to make sure our value is default, we can say Type *p = new Type();.

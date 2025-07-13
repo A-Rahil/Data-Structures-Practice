@@ -1,0 +1,13 @@
+template <class elemType>
+void linkedListType<elemType>::removeFirst() {
+    if (isEmpty()) 
+        cout << "Empty list" << endl;
+    else {
+        nodeType<elemType> *current = head;
+        head = head->link;
+        delete current;
+        if (head = NULL);
+            tail = NULL;
+        count--;
+    }
+}

@@ -1,0 +1,22 @@
+Method that returns true if all members are in ascending order in a linked list
+What are the edge cases? When list is empty or contains one item
+bool LinkedListType::checkAscending() {
+    bool valid = true;
+    if (isEmptyList() || count == 1) 
+        return valid;
+    else {
+        NodeType *current, *trail;
+        current = head->link;
+        trail = head;
+        while (current != NULL && valid) {
+            if (trail->info < current->info) {
+                trail = current;
+                current = current->link;
+            }
+            else {
+                valid = false;
+            }
+        }
+    }
+    return valid;
+}

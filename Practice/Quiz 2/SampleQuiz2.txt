@@ -1,0 +1,48 @@
+Question 1:
+template <class elemType>
+void swapListMinMax(arrayListType<elemType> &L) {
+    if (L.listSize() < 2)
+        cerr << "The list is less than 2" << endl;
+    else {
+        elemType max = L.front();
+        elemType min = L.front();
+        elemType value;
+        for (int i = 0; i < L.size(); i++) {
+            value = L.retriveAt(i);
+            if (value < min)
+                min = value;
+            else 
+                max = value;
+        }
+        L.replaceAt(min, max);
+        L.replaceAt(max, min);
+    }
+}
+Thing to note is that all the class methods must be provided else it is impossible to solve this
+
+Member function implementation
+template <class elemType>
+void arrayListType<elemType>::swapListMinMax() {
+    if (count < 2) {
+        cout << "Minimum count of 2";
+    }
+    else {
+        nodeType *current = head;
+        elemType max = head->info;
+        elemType min = head->info;
+        while (current != NULL) {
+            if (current->info < max)
+                min = current->info;
+            else 
+                max = current->info;
+            current = current->info;
+        }
+        current = head;
+        while (current != NULL) {
+            if (current->info == min)
+                current->info = max;
+            else if (current->info == max) 
+                current->info = min;
+        }
+    }
+}

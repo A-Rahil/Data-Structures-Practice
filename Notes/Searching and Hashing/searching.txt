@@ -1,0 +1,70 @@
+We can search by iteration, that is linear search
+We use an item key, or called a search key
+The main metric to check for efficiency is the number of comparisons.
+
+Sequential Search: we start at the first, then make our way through the collection until we find our element or traverse over the whole collection
+Binary Search: works on a sorted array of items, where we keep on dividing the array's search segment
+
+For binary search, we need to define our own comparison operator for certain data types
+
+Hashing:
+We need to use a hash table, implemented using a hashtable.
+Our hash function gives the address of the item -> h(x), where x is our search key
+We partition our hash table into buckets, where each bucket has its own items that are similar which will cut down on the search item
+Number of buckets: b
+Number of items each bucket holds: r
+Size of HT: br = m
+
+We find the index with an algorithm, using modulo
+
+Collisions can arise when two items have the same key
+Which is why we need to design a good hash table
+And we can use a prime number for the size of the hash table
+
+The size, as a rule of thumb, is 2x or 3x the size of the data
+
+We can reduce collisions, but we cannot eliminate them
+
+Collision reduction using a better hash function
+
+We must also delete any sort of randomness in our hashtables
+
+Collision Resolution:
+1) Open Addressing: data stored within the hashtable, so we cannot use any other auxiliary container
+2) Separate Chaining: define some auxiliary data 
+
+Separate Chaining: we cannot have duplicates, hence we call the data a key to ensure the uniqueness.
+
+So we need to search for the item in a sublist and see if it exists, then insert it.
+If we have a good distribution where HTSize = kn, then the search and insert would be O(1)
+
+Thanks to LL, we have no concern of overflow
+
+Follow rules of thumb to find a good hash function
+
+Open Addressing (slightly harder than separate chaining): We store keys in separate buckets, but we may have keys that hash to the same location
+Hence, we can find a solution to hash them to the same table, not necessarily the same location
+a) Linear Probing: for insertion, start from the hashing location, and then check to see if the location is empty
+If not, then insert it at the next available location.
+
+To hash a key, we use the hash function and then go to that index, check if it is the same key. If not, then we only search a few keys
+To know if the hashtable has empty keys, we choose a sentinel value to see if it is available. Fill the table with the available sentinel.
+When we delete a key, we replace the key with the sentinel to indicate it is available
+No Free Lunch Theorem: you can provide a counterexample to any method you choose, but just follow a few good rules of thumb 
+
+b) Quadratic Probing: a solution to clustering, we square when hashing, and it gives better performance
+Sometimes, we might iterate forever. To fix this, we use quadratic probing at most 10 times and then use linear probing so we are guaranteed to get an answer
+
+c) Rehashing: have multiple hash functions so that perhaps one of them could give us an available location. If we fail multiple times,
+then we hybridize the solutions and use linear probing. Still, worst case scenario is O(n) but expected case is O(1)
+
+Chaining vs Open Addressing:
+Chaining Adv: straightforward insertion and deletion, short linked lists on average, and if item size is large - then amount of space saved is decent
+CHaining Dis: consumption of more memory space when item size is small
+
+But nowadays, we can always get memory so we moreso consider the efficiency
+
+Summary:
+Seq Search: O(n)
+Binary Search: O(log n)
+Hashing: O(1)

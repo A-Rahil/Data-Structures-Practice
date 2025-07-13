@@ -1,0 +1,34 @@
+void insert(const type &item) {
+    nodetype<type> *newNode = new nodetype<type>;
+    newNode->info = item;
+    newNode->link = NULL;
+    nodetype *current = head;
+    nodetype *trail;
+    bool valid = false;
+    if (isEmpty()) 
+        head = tail = newNode;
+    else {
+        if (item <= current->info) {
+            newNode->link = head->link;
+            head = newNode;
+        }
+        else {
+            trail = current;
+            current = current->link;
+            while (current != NULL && !found) {
+                if (current->info < item) {
+                    trail = current;
+                    current = current->link;
+                }
+                else {
+                    valid = true;
+                }
+            }
+            trail->link = newNode;
+            newNode->link = current;
+            if (current == NULL) 
+                tail = newNode;
+        }
+    }
+    count++;
+}
